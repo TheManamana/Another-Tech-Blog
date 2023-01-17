@@ -5,8 +5,13 @@ const withAuth = require('../utils/auth');
 // Prevent non logged in users from viewing the homepage
 router.get('/', withAuth, async (req, res) => {
     try {
-        const blogData = await Blog.findAll();
+        const blogData = await Blog.findAll(
+            {
+                include: { all: true },
+            }
+        );
         const blogArray = blogData.map((blog) => blog.get({ plain: true }));
+            console.log(blogArray);
 
         res.render('homepage', {
             blogArray,
@@ -55,7 +60,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
         const blogData = await Blog.findByPk(req.params.id, {
             include: [{ model: User }, { model: Comment }],
         });
-        
+
         const blog = blogData.get({ plain: true });
         const userId = req.session.user_id;
         res.render('blog', {
