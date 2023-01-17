@@ -8,7 +8,6 @@ router.get('/', withAuth, async (req, res) => {
         const blogData = await Blog.findAll();
         const blogArray = blogData.map((blog) => blog.get({ plain: true }));
 
-
         res.render('homepage', {
             blogArray,
             // Pass the logged in flag to the template
@@ -30,7 +29,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get("/dashboard", withAuth, async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.findAll({
             where: {
@@ -41,7 +40,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
         const blogArray = blogData.map((blog) => blog.get({ plain: true }));
 
         const userId = req.session.user_id;
-        res.render("dashboard", {
+        res.render('dashboard', {
             blogArray,
             userId,
             logged_in: req.session.logged_in,
@@ -51,7 +50,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
     }
 });
 
-router.get("/blog/:id", withAuth, async (req, res) => {
+router.get('/blog/:id', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.findByPk(req.params.id, {
             include: [{ model: User }, { model: Comment }],
@@ -59,7 +58,7 @@ router.get("/blog/:id", withAuth, async (req, res) => {
         
         const blog = blogData.get({ plain: true });
         const userId = req.session.user_id;
-        res.render("blog", {
+        res.render('blog', {
             blog,
             userId,
             logged_in: req.session.logged_in,
