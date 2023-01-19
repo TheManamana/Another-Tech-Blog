@@ -15,7 +15,7 @@ This is a tech blog that allows users to post blogs and comment on others
 
 ## Installation
 
-Running on: 
+Running at: https://infinite-reef-75398.herokuapp.com/
 
 ## Usage
 
