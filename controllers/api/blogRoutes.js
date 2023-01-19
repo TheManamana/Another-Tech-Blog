@@ -4,7 +4,12 @@ const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
     try {
-        const blogData = await Blog.create(req.body);
+        
+        const blogData = await Blog.create({
+            title: req.body.title,
+            body: req.body.body,
+            user_id: req.session.user_id,
+    });
         res.status(200).json(blogData);
     } catch (err) {
         res.status(500).json(err);
@@ -23,7 +28,7 @@ router.put('/:id', withAuth, async (req, res) => {
 
         res.status(200).json(blogData);
     } catch (err) {
-        res.status(500).json(err);        
+        res.status(500).json(err);
     }
 });
 
@@ -33,7 +38,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 
         res.status(200).json(blogData);
     } catch (err) {
-        res.status(500).json(err);        
+        res.status(500).json(err);
     }
 });
 

@@ -17,17 +17,17 @@ const comments = [
         user_id: 1,
     },
     {
-        comment: "1",
+        comment: "Did this work?",
         blog_id: 3,
         user_id: 3,
     },
     {
-        comment: "2",
+        comment: "Oh very interesting!",
         blog_id: 3,
         user_id: 2,
     },
     {
-        comment: "3",
+        comment: "Ok cool..",
         blog_id: 3,
         user_id: 1,
     }

@@ -1,4 +1,26 @@
 <h1>Homepage</h1>
 
+<div>
+    {{#each blogArray as |blog|}}
+    <div class="rounded bg-secondary">
+        <div>
+            <h2><a style="color: rgb(20, 30, 168)" href="/blog/{{id}}">{{title}}</a></h2>
+            <h3>Author: {{user.name}}</h3>
+        </div>
 
+        <div>
+            <p class="post-content">{{contents}}</p>
+        </div>
 
+        {{#each comments as |comment|}}
+        <div class="container bg-light rounded m-1 ">
+            <p>{{comment.comment}}</p>
+        </div>
+        {{/each}}
+        &nbsp
+        <p>  </p>
+        <p>  </p>
+
+    </div>
+    {{/each}}
+</div>

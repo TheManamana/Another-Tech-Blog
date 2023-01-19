@@ -1,1 +1,45 @@
 <h1>Dashboard</h1>
+<div class="blog-post">
+    <div class="dashboard">
+        {{#each blogArray as |blog|}}
+        <div class="container border rounded bg-secondary">
+            <div>
+                <h2><a style="color: rgb(20, 30, 168)" href="/blog/{{id}}">{{title}}</a></h2>
+                <h3>Author: {{user.name}}</h3>
+            </div>
+
+            <div>
+                <p class="post-content">{{contents}}</p>
+            </div>
+
+            {{#each comments as |comment|}}
+            <div class="container border rounded m-1 bg-light">
+                <p>{{comment.comment}}</p>
+            </div>
+            {{/each}}
+        </div>
+        {{/each}}
+    </div>
+
+    <div class="container border rounded bg-secondary post-input" id="dashboard-display">
+        <h2>Post new blog</h2>
+        <form class="form newBlog-form">
+      <div class="form-group">
+        <label for="blog-title">Title</label>
+        <input class="form-input" type="text" id="blog-title" />
+      </div>
+      <div class="form-group">
+        <label for="blog-body">Body</label>
+        <textarea class="form-control" id="blog-body"></textarea>        
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
+    </div>
+</div>
+
+  </div>
+  <div class="col-md-6">
+
+<script src="/js/dashboard.js"></script>
